@@ -49,7 +49,7 @@ signed main(int argc,char*argv[]){
         glBindVertexArray(0);
         // end of render stuff
 
-        glfwSwapBuffers(main_window);
+        glfwSwapBuffers(main_window);        
         glfwPollEvents();
     }
     end_program:

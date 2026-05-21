@@ -8,26 +8,31 @@ void framebuffer_size_callback(GLFWwindow*window,int width,int height){
     glViewport(0,0,width,height);
 }  
 
+float rotate_speed=.03f;
 void key_callback(GLFWwindow*window,int key,int scancode,int action,int mods){
     if(key==GLFW_KEY_ESCAPE&&action==GLFW_PRESS){
         glfwSetWindowShouldClose(window,true);
     }
-    if(key==GLFW_KEY_D){
+    move_key(window);
+}
+
+void move_key(GLFWwindow*window){
+    if(glfwGetKey(window,GLFW_KEY_D)){
         global_horizontal_offset+=0.01f;
     }
-    if(key==GLFW_KEY_A){
+    if(glfwGetKey(window,GLFW_KEY_A)){
         global_horizontal_offset-=0.01f;
     }
-    if(key==GLFW_KEY_W){
+    if(glfwGetKey(window,GLFW_KEY_W)){
         global_vertical_offset+=0.01f;
     }
-    if(key==GLFW_KEY_S){
+    if(glfwGetKey(window,GLFW_KEY_S)){
         global_vertical_offset-=0.01f;
     }
-    if(key==GLFW_KEY_LEFT){
-        alpha-=PI/6.f;
+    if(glfwGetKey(window,GLFW_KEY_Q)){
+        alpha-=rotate_speed;
     }
-    if(key==GLFW_KEY_RIGHT){
-        alpha+=PI/6.f;
+    if(glfwGetKey(window,GLFW_KEY_E)){
+        alpha+=rotate_speed;
     }
 }
