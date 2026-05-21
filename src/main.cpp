@@ -34,9 +34,13 @@ signed main(int argc,char*argv[]){
 
         glUseProgram(main_shader.get_program());
         
-        int ourColorIdx=glGetUniformLocation(main_shader.get_program(),"ourColor");
-        glUniform4f(ourColorIdx,.0f,.0f,blueVal,.0f);
+        int offsetIdx=glGetUniformLocation(main_shader.get_program(),"offset");
+        glUniform2f(offsetIdx,global_horizontal_offset,global_vertical_offset);
         
+        int alphaIdx=glGetUniformLocation(main_shader.get_program(),"alpha");
+        glUniform1f(alphaIdx,alpha);
+        
+
         glBindVertexArray(vo.get_VAO());
         // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // just the lines
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); // fill inside the lines
