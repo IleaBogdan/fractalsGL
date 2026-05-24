@@ -39,6 +39,9 @@ signed main(int argc,char*argv[]){
         
         int alphaIdx=glGetUniformLocation(main_shader.get_program(),"alpha");
         glUniform1f(alphaIdx,alpha);
+
+        int timeIdx=glGetUniformLocation(main_shader.get_program(),"time");
+        glUniform1f(timeIdx,time);
         
 
         glBindVertexArray(vo.get_VAO());
