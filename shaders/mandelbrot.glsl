@@ -18,6 +18,9 @@ float rand(vec2 co){
     return fract(sin(dot(co, vec2(12.9898, 78.233))) * 43758.5453);
 }
 
+vec3 calc_color(float h){ // pulsing blue-green color calculator
+    return vec3(0,h+sin(time)*0.1,sqrt(h)*sin(time));
+}
 void main(){
     // z is the 3d coord so we can ignore it
     vec2 c=cords.xy+offset;
@@ -36,5 +39,6 @@ void main(){
         }
         h+=(float(l)/max_iterations)/color_diff;
     }
-    FragColor=vec4(vec3(h),1.0);
+    // FragColor=vec4(vec3(h),1.0); // black and white
+    FragColor=vec4(calc_color(h),1.0); 
 } 
