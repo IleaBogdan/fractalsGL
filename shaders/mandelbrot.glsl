@@ -31,6 +31,7 @@ void main(){
     float color_diff=8.0;
     vec2 z=vec2(0,0);
     float l=0.0,h=0.0;
+    // timp to escape sampeling color_diff*max_iterations time
     for(int j=0;j<color_diff;++j){
         for(int i=0;i<max_iterations;++i){
             // z -> z^2 +c
