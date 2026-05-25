@@ -5,6 +5,8 @@ in vec3 cords;
 uniform vec2 offset;
 uniform float alpha;
 uniform float time;
+uniform float zoom;
+
 
 vec2 complex_multiplication(vec2 a, vec2 b){
     return vec2(a.x*b.x-a.y*b.y,a.x*b.y+a.y*b.x);
@@ -27,6 +29,7 @@ void main(){
     vec2 tmp=c;
     c.x=tmp.x*cos(alpha)-tmp.y*sin(alpha);
     c.y=tmp.x*sin(alpha)+tmp.y*cos(alpha);
+    c*=zoom;
     int max_iterations=32;
     float color_diff=8.0;
     vec2 z=vec2(0,0);

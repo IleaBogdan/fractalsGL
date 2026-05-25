@@ -21,9 +21,6 @@ signed main(int argc,char*argv[]){
     shader main_shader;
     main_shader.init("shaders/vertex.glsl","shaders/mandelbrot.glsl");
     
-    shader heart_shader;
-    heart_shader.init("shaders/vertex.glsl","shaders/heart.glsl");
-
     vertex_object vo;
     vo.init(square,square_attribute_sizes);
 
@@ -35,8 +32,7 @@ signed main(int argc,char*argv[]){
         float time=glfwGetTime();
         float blueVal=(sin(time)/2.f)+.5f;
 
-        // int unsigned curr_program=main_shader.get_program();
-        int unsigned curr_program=heart_shader.get_program();
+        int unsigned curr_program=main_shader.get_program();
 
         glUseProgram(curr_program);
         
@@ -49,6 +45,8 @@ signed main(int argc,char*argv[]){
         int timeIdx=glGetUniformLocation(curr_program,"time");
         glUniform1f(timeIdx,time);
         
+        int zoomIdx=glGetUniformLocation(curr_program,"zoom");
+        glUniform1f(zoomIdx,zoom);
 
         glBindVertexArray(vo.get_VAO());
         // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // just the lines
